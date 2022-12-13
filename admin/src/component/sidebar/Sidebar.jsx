@@ -47,46 +47,16 @@ const Sidebar = () => {
               <span>Products</span>
             </li>
           </Link>
+          <Link to="/review" style={{ textDecoration: "none" }}>
+            <li>
+              <Inventory2OutlinedIcon className="icon" />
+              <span>Review</span>
+            </li>
+          </Link>
 
           <li>
             <ReorderIcon className="icon" />
             <span>Orders</span>
-          </li>
-          <li>
-            <LocalShippingIcon className="icon" />
-            <span>Delivery</span>
-          </li>
-          <p className="title">Useful</p>
-
-          <li>
-            <QueryStatsIcon className="icon" />
-            <span>Stats</span>
-          </li>
-          <li>
-            <NotificationsIcon className="icon" />
-            <span>Notification</span>
-          </li>
-          <li>
-            <MonitorHeartIcon className="icon" />
-            <span>System Healts</span>
-          </li>
-          <li>
-            <PatternIcon className="icon" />
-            <span>Logs</span>
-          </li>
-          <li>
-            <SettingsIcon className="icon" />
-            <span>Setting</span>
-          </li>
-          <p className="title">User</p>
-
-          <li>
-            <AssignmentIndIcon className="icon" />
-            <span>Profile</span>
-          </li>
-          <li>
-            <LogoutIcon className="icon" />
-            <span>Logout</span>
           </li>
         </ul>
       </div>

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./navbar.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import PublicIcon from "@mui/icons-material/Public";
 import avatar from "../../image/images.png";
+import { DarkModeContext } from "../../context/darkModeContext";
 const Navbar = () => {
+  const { dispatch } = useContext(DarkModeContext);
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -16,7 +18,7 @@ const Navbar = () => {
             <PublicIcon className="icon" />
             English
           </div>
-          <div className="item">
+          <div className="item" onClick={() => dispatch({ type: "TOGGLE" })}>
             <PublicIcon className="icon" />
           </div>
           <div className="item">

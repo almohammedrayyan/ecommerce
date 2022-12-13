@@ -10,6 +10,8 @@ import "./style/dark.scss";
 import { useContext, useState } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext";
+import ReviewPage from "./pages/rev/review";
+import Review from "./component/review/review";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
@@ -23,6 +25,7 @@ function App() {
         <Routes>
           <Route path="/">
             <Route path="login" element={<Login />} />
+
             <Route
               index
               element={
@@ -31,6 +34,17 @@ function App() {
                 </RequireAuth>
               }
             />
+            <Route path="review">
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    {" "}
+                    <ReviewPage />
+                  </RequireAuth>
+                }
+              />
+            </Route>
             <Route path="users">
               <Route
                 index
