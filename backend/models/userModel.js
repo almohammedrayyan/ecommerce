@@ -67,20 +67,16 @@ userSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-// // Generating Password Reset Token
-// userSchema.methods.getResetPasswordToken = function () {
-//   // Generating Token
-//   const resetToken = crypto.randomBytes(20).toString("hex");
+// Generating Password Reset Token
 
-//   // Hashing and adding resetPasswordToken to userSchema
-//   this.resetPasswordToken = crypto
-//     .createHash("sha256")
-//     .update(resetToken)
-//     .digest("hex");
-
-//   this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
-
-//   return resetToken;
-// };
-
+userSchema.methods.getResetPassword = function () {
+  //generating token
+  const resetToken = crypto.randomBytes(20).toString("hex");
+  this.resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+  this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
+  return resetToken;
+};
 module.exports = mongoose.model("User", userSchema);
