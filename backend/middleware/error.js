@@ -9,7 +9,22 @@ module.exports = (err, req, res, next) => {
     const message = `Resource not found. Invalid:${err.path}`;
     err = new ErrorHandling(message, 400);
   }
+  //mongoose duplicate error
+  if (err.code === 11000) {
+    const message = `Duplicate ${Object.keys(err.keyValue)} Entered`;
+    err = new ErrorHandling(message, 400);
+  }
+  //wrong jwt token
+  if (err.name === "JsonWebTokenError") {
+    const message = `Json Web Token is invalid, Try again`;
+    err = new ErrorHandling(message, 400);
+  }
 
+  //jwt expire error
+  if (err.name === "TokenExpiredError") {
+    const message = `Json Web Token is expired, Try again`;
+    err = new ErrorHandling(message, 400);
+  }
   res.status(err.statusCode).json({
     success: false,
     message: err.message,
