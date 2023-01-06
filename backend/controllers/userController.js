@@ -153,6 +153,7 @@ exports.getUpdatedPassword = catchError(async (req, res, next) => {
   await user.save();
   sendToken(user, 200, res);
 });
+
 //update User Profile
 exports.updateProfile = catchError(async (req, res, next) => {
   const newUserData = {
@@ -165,6 +166,56 @@ exports.updateProfile = catchError(async (req, res, next) => {
     runValidators: true,
     useFindAndModify: false,
   });
+  res.status(200).json({
+    success: true,
+  });
+});
+//get all users(admin)
+exports.getAllUsers = catchError(async (req, res, next) => {
+  const users = await User.find();
+
+  res.status(200).json({
+    success: true,
+    users,
+  });
+});
+
+//get single users(admin)
+exports.getSingleUser = catchError(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+  if (!user) {
+    return next(new ErrorHandling(`User not exist with Id:${req.params.id}`));
+  }
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+//update User Role
+exports.updateRole = catchError(async (req, res, next) => {
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+    role: req.body.role,
+  };
+  //we will add cloudinary later
+  const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
+  res.status(200).json({
+    success: true,
+  });
+});
+//Delete User --admin
+exports.deleteUser = catchError(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    return next(new ErrorHandling(`User does not exist Id:${req.params.id}`));
+  }
+  await user.remove();
   res.status(200).json({
     success: true,
   });
