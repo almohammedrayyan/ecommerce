@@ -4,6 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 // import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 60px;
@@ -63,7 +64,7 @@ const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
-  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+  text-decoration: none ${mobile({ fontSize: "12px", marginLeft: "10px" })};
 `;
 
 const Navbar = () => {
@@ -78,19 +79,31 @@ const Navbar = () => {
             <Input placeholder="Search" />
             <Search style={{ color: "gray", fontSize: 16 }} />
           </SearchContainer>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <MenuItem>HOME</MenuItem>
+          </Link>
+          <Link to="/product-item" style={{ textDecoration: "none" }}>
+            <MenuItem>PRODUCT</MenuItem>
+          </Link>
         </Left>
 
         <Right>
           <MenuItem>
             <Language>EN</Language>
-          </MenuItem>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
-          <MenuItem>
-            <Badge badgeContent={4} color="primary">
-              <ShoppingCartOutlined />
-            </Badge>
-          </MenuItem>
+          </MenuItem>{" "}
+          <Link to="/register" style={{ textDecoration: "none" }}>
+            <MenuItem>REGISTER</MenuItem>
+          </Link>
+          <Link to="/login" style={{ textDecoration: "none" }}>
+            <MenuItem>SIGN IN</MenuItem>
+          </Link>
+          <Link to="/cart" style={{ textDecoration: "none" }}>
+            <MenuItem>
+              <Badge badgeContent={4} color="primary">
+                <ShoppingCartOutlined />
+              </Badge>
+            </MenuItem>
+          </Link>
         </Right>
       </Wrapper>
     </Container>
