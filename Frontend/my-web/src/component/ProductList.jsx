@@ -5,8 +5,10 @@ import {
   ShoppingCartOutlined,
 } from "@material-ui/icons";
 import React from "react";
+import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { FaRupeeSign } from "react-icons/fa";
 const Info = styled.div`
   opacity: 0;
   width: 100%;
@@ -47,7 +49,7 @@ const Circle = styled.div`
 `;
 
 const Image = styled.img`
-  height: 75%;
+  height: 65%;
   z-index: 2;
 `;
 
@@ -66,25 +68,74 @@ const Icon = styled.div`
     transform: scale(1.1);
   }
 `;
+const Title = styled.p`
+  font-size: 17px;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 30px;
+  font-family: "Raleway";
+  font-weight: 600;
+`;
+const Price = styled.span`
+  font-size: 15px;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 17px;
+  font-family: "Raleway";
+  font-weight: 600;
+`;
+const Main = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 85%;
+`;
+const options = {
+  edit: false,
+  color: "rgb(20,20,20,0.1)",
+  activeColor: "tomato",
+  size: window.innerWidth < 600 ? 20 : 25,
+  value: 2.5,
+  isHalf: true,
+};
+const Mai = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: end;
+`;
 const ProductList = ({ item }) => {
   return (
-    <Container>
-      <Circle />
-      <Image src={item.img} />
-      <Info>
-        <Icon>
-          <ShoppingCartOutlined />
-        </Icon>
-        <Icon>
-          <SearchOutlined />
-        </Icon>
-        <Icon>
-          <Link to="/single-product" style={{ textDecoration: "none" }}>
-            <FavoriteBorderOutlined />
-          </Link>
-        </Icon>
-      </Info>
-    </Container>
+    <>
+      <Container>
+        <Circle />
+        <Image src={item.img} />
+        <Info>
+          <Icon>
+            <ShoppingCartOutlined />
+          </Icon>
+          <Icon>
+            <SearchOutlined />
+          </Icon>
+          <Icon>
+            <Link to="/single-product" style={{ textDecoration: "none" }}>
+              <FavoriteBorderOutlined />
+            </Link>
+          </Icon>
+        </Info>
+        <Main>
+          <Title>{item.title}</Title>
+          <Price>
+            <FaRupeeSign
+              style={{ position: "relative", top: "4px", left: "-3px" }}
+            />
+            2000
+          </Price>
+          <Mai>
+            <p style={{ position: "absolute", top: "-17px" }}> (201 reviews)</p>
+            <ReactStars {...options} />
+          </Mai>
+        </Main>
+      </Container>
+    </>
   );
 };
 

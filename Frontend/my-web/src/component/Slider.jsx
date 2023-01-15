@@ -3,12 +3,14 @@ import styled from "styled-components";
 import ArrowForwardIosTwoToneIcon from "@material-ui/icons/ArrowForwardIosTwoTone";
 import ArrowBackIosTwoToneIcon from "@material-ui/icons/ArrowBackIosTwoTone";
 import { sliderItems } from "../data";
+import { mobile } from "../responsive";
 const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
   background-color: #dfc381;
   position: relative;
+  ${mobile({ display: "none" })}
   overflow: hidden;
 `;
 

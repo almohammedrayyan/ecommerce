@@ -1,5 +1,6 @@
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
@@ -104,6 +105,9 @@ const Navbar = () => {
               </Badge>
             </MenuItem>
           </Link>
+          {/* <MenuItem>
+            <AccountCircleIcon />
+          </MenuItem> */}
         </Right>
       </Wrapper>
     </Container>

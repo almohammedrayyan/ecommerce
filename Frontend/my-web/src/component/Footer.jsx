@@ -13,6 +13,7 @@ import { mobile } from "../responsive";
 const Container = styled.div`
   display: flex;
   ${mobile({ flexDirection: "column" })}
+  background-color: #9f901b6b
 `;
 
 const Left = styled.div`
@@ -121,6 +122,12 @@ const Footer = () => {
           <ListItem>Wishlist</ListItem>
           <ListItem>Wishlist</ListItem>
           <ListItem>Terms</ListItem>
+          <ListItem style={{ listStyle: "none" }}>
+            CopyRights Reserverd 2023
+          </ListItem>
+          <ListItem style={{ listStyle: "none" }}>
+            &copy; Mohammed Fuzail Rayyan
+          </ListItem>
         </List>
       </Center>
       <Right>

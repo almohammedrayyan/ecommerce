@@ -8,14 +8,22 @@ const Conatiner = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
 `;
+const Heading = styled.h2`
+  text-align: center;
+  font-family: roboto, sans-serif;
+  font-weight: 300;
+`;
 
 const Product = () => {
   return (
-    <Conatiner>
-      {popularProducts.map((item) => (
-        <ProductList item={item} key={item.id} />
-      ))}
-    </Conatiner>
+    <>
+      <Heading>Featured Product</Heading>
+      <Conatiner>
+        {popularProducts.map((item) => (
+          <ProductList item={item} key={item.id} />
+        ))}
+      </Conatiner>
+    </>
   );
 };
 
