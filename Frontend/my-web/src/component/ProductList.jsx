@@ -146,11 +146,7 @@ import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import "./product.css";
 import styled from "styled-components";
-import {
-  FavoriteBorderOutlined,
-  SearchOutlined,
-  ShoppingCartOutlined,
-} from "@material-ui/icons";
+
 const options = {
   edit: false,
   color: "rgb(20,20,20,0.1)",
@@ -159,47 +155,18 @@ const options = {
   value: 2.5,
   isHalf: true,
 };
-const Info = styled.div`
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.5s ease;
-  cursor: pointer;
-`;
-const Icon = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
-  transition: all 0.5s ease;
-  &:hover {
-    background-color: #e9f5f5;
-    transform: scale(1.1);
-  }
-`;
+
 const ProductList = ({ item }) => {
   return (
     <Link className="productCard" to={item._id}>
-      <img src={item.img} alt={item.title} />
-      <p>{item.title}</p>
+      <img src={item.image} alt={item.name} />
+      <p>{item?.name}</p>
       {/*  */}
       <div>
         <ReactStars {...options} />
         <span>(256 Reviews)</span>
       </div>
-      <span>{item.price}</span>
+      <span>{item?.price}</span>
     </Link>
   );
 };
