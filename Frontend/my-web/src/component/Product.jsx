@@ -6,6 +6,7 @@ import { getProduct } from "../actions/productActions";
 import { useSelector, useDispatch } from "react-redux";
 import gif from "../layout/amalie-steiness.gif";
 import Loader from "../layout/Loader";
+import { useAlert } from "react-alert";
 const Conatiner = styled.div`
   margin: 2vmax auto;
   display: flex;
@@ -23,20 +24,28 @@ const Heading = styled.h2`
 const Product = () => {
   const dispatch = useDispatch();
 
-  const productDetails = useSelector((state) => state.products || {});
-  const { products, loading, error } = productDetails;
-  console.log(products);
+  const { products, loading, error } = useSelector((state) => state.products);
+  const alert = useAlert();
   useEffect(() => {
     dispatch(getProduct());
-  }, [dispatch]);
+    if (error) {
+      return alert.error(error);
+    }
+  }, [dispatch, error]);
   return (
     <Fragment>
-      <Heading>Featured Product</Heading>
-      <Conatiner>
-        {products?.map((product) => {
-          return <ProductList item={product} />;
-        })}
-      </Conatiner>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <Heading>Featured Product</Heading>
+          <Conatiner>
+            {products?.map((product) => {
+              return <ProductList product={product} />;
+            })}
+          </Conatiner>
+        </Fragment>
+      )}
     </Fragment>
   );
 };

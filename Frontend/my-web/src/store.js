@@ -4,10 +4,10 @@ import {
   legacy_createStore as createStore,
   combineReducers,
   applyMiddleware,
-} from "redux";
+} from "@reduxjs/toolkit";
 import { productReducer } from "./reducer/productReducers";
 const reducer = combineReducers({
-  product: productReducer,
+  products: productReducer,
 });
 let initialState = {};
 

@@ -102,12 +102,12 @@
 //   display: flex;
 //   justify-content: end;
 // `;
-// const ProductList = ({ item }) => {
+// const ProductList = ({ product }) => {
 //   return (
 //     <>
 //       <Container>
 //         <Circle />
-//         <Image src={item.img} />
+//         <Image src={product.img} />
 //         <Info>
 //           <Icon>
 //             <ShoppingCartOutlined />
@@ -122,7 +122,7 @@
 //           </Icon>
 //         </Info>
 //         <Main>
-//           <Title>{item.title}</Title>
+//           <Title>{product.title}</Title>
 //           <Price>
 //             <FaRupeeSign
 //               style={{ position: "relative", top: "4px", left: "-3px" }}
@@ -147,27 +147,27 @@ import ReactStars from "react-rating-stars-component";
 import "./product.css";
 import styled from "styled-components";
 
-const options = {
-  edit: false,
-  color: "rgb(20,20,20,0.1)",
-  activeColor: "tomato",
-  size: window.innerWidth < 600 ? 20 : 25,
-  value: 2.5,
-  isHalf: true,
-};
 
-const ProductList = ({ item }) => {
+const ProductList = ({ product }) => {
+  
+const options = {
+  value: product.ratings,
+  readOnly: true,
+  precision: 0.5,
+};
   return (
-    <Link className="productCard" to={item._id}>
-      <img src={item.image} alt={item.name} />
-      <p>{item?.name}</p>
-      {/*  */}
-      <div>
-        <ReactStars {...options} />
-        <span>(256 Reviews)</span>
-      </div>
-      <span>{item?.price}</span>
-    </Link>
+    <Link className="productCard" to={`/product/${product._id}`}>
+    <img src={product.images[0].url} alt={product.name} />
+    <p>{product.name}</p>
+    <div>
+      <ReactStars {...options} />{" "}
+      <span className="productCardSpan">
+        {" "}
+        ({product.numOfReviews} Reviews)
+      </span>
+    </div>
+    <span>{`₹${product.price}`}</span>
+  </Link>
   );
 };
 
