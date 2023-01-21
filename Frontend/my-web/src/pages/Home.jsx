@@ -3,7 +3,7 @@ import Announcemnet from "../component/Announcemnet";
 import Navbar from "../component/Navbar";
 import Slider from "../component/Slider";
 import Categories from "../component/Categories";
-import Product from "../component/Product";
+import Product from "../component/Product/Product";
 import NewsLetter from "../component/NewsLetter";
 import Footer from "../component/Footer";
 import MetaData from "../layout/MetaData";

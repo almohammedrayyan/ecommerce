@@ -1,11 +1,9 @@
 import React, { Fragment, useEffect } from "react";
 import styled from "styled-components";
-import { popularProducts } from "../data";
 import ProductList from "./ProductList";
-import { getProduct } from "../actions/productActions";
+import { getProduct } from "../../actions/productActions";
 import { useSelector, useDispatch } from "react-redux";
-import gif from "../layout/amalie-steiness.gif";
-import Loader from "../layout/Loader";
+import Loader from "../../layout/Loader";
 import { useAlert } from "react-alert";
 const Conatiner = styled.div`
   margin: 2vmax auto;

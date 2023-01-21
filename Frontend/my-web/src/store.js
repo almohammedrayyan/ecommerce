@@ -5,9 +5,13 @@ import {
   combineReducers,
   applyMiddleware,
 } from "@reduxjs/toolkit";
-import { productReducer } from "./reducer/productReducers";
+import {
+  productDetailsReducer,
+  productReducer,
+} from "./reducer/productReducers";
 const reducer = combineReducers({
   products: productReducer,
+  productDetails: productDetailsReducer,
 });
 let initialState = {};
 
