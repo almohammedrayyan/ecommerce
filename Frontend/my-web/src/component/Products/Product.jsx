@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect } from "react";
 import styled from "styled-components";
-import ProductList from "./ProductList";
-import { getProduct } from "../../actions/productActions";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../../layout/Loader";
 import { useAlert } from "react-alert";
+import { getALLProduct } from "../../actions/productActions";
+import ProductCard from "../Card/ProductCard";
 const Conatiner = styled.div`
   margin: 2vmax auto;
   display: flex;
@@ -23,13 +23,14 @@ const Product = () => {
   const dispatch = useDispatch();
 
   const { products, loading, error } = useSelector((state) => state.products);
+
   const alert = useAlert();
   useEffect(() => {
-    dispatch(getProduct());
     if (error) {
       return alert.error(error);
     }
-  }, [dispatch, error]);
+    dispatch(getALLProduct());
+  }, [dispatch, error, alert]);
   return (
     <Fragment>
       {loading ? (
@@ -38,9 +39,10 @@ const Product = () => {
         <Fragment>
           <Heading>Featured Product</Heading>
           <Conatiner>
-            {products?.map((product) => {
-              return <ProductList product={product} />;
-            })}
+            {products &&
+              products.map((product) => (
+                <ProductCard key={product?._id} product={product} />
+              ))}
           </Conatiner>
         </Fragment>
       )}

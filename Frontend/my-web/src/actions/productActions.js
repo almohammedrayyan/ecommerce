@@ -1,15 +1,15 @@
-import axios from "axios";
 import {
   ALL_PRODUCT_FAIL,
   ALL_PRODUCT_REQUEST,
+  ALL_PRODUCT_SUCCESS,
+  CLEAR_ERRORS,
   PRODUCT_DETAILS_FAIL,
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
-  ALL_PRODUCT_SUCCESS,
-  CLEAR_ERRORS,
 } from "../constants/productConstant";
+import axios from "axios";
 
-export const getProduct = () => async (dispatch) => {
+export const getALLProduct = () => async (dispatch) => {
   try {
     dispatch({
       type: ALL_PRODUCT_REQUEST,
@@ -26,8 +26,8 @@ export const getProduct = () => async (dispatch) => {
     });
   }
 };
-//product details
-export const productDetails = (id) => async (dispatch) => {
+
+export const getOneProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({
       type: PRODUCT_DETAILS_REQUEST,
@@ -44,8 +44,8 @@ export const productDetails = (id) => async (dispatch) => {
     });
   }
 };
-//clearing errors
-export const clearErrors = () => async (dispatch) => {
+
+export const clearError = () => async (dispatch) => {
   dispatch({
     type: CLEAR_ERRORS,
   });
