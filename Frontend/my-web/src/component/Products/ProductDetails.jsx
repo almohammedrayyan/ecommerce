@@ -31,10 +31,20 @@ const ProductDetails = () => {
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title={`${product.name} -- ECOMMERCE`} />
+          <MetaData title={`${product?.name} -- ECOMMERCE`} />
           <div className="ProductDetails">
+            {/* <p
+              style={{
+                textAlign: "center",
+                justifyContent: "center",
+                display: "flex",
+                fontWeight: "bold",
+                position: "inherit",
+              }}
+            >{`${product?.name}`}</p> */}
+
             <div>
-              <Carousel>
+              <Carousel autoPlay={true} indicators={false}>
                 {product?.images &&
                   product?.images?.map((item, i) => {
                     return (

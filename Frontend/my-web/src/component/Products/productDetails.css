@@ -1,5 +1,5 @@
 .ProductDetails {
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(208 208 217); */
   width: 100vw;
   max-width: 100%;
   padding: 6vmax;
@@ -22,9 +22,9 @@
   align-items: flex-start;
 }
 
-.CarouselImage {
-  width: 20vmax;
-}
+/* .CarouselImage {
+  width: 60vmax;
+} */
 
 .detailsBlock-1>h2 {
   color: rgb(54, 54, 54);
@@ -115,12 +115,12 @@
   margin: 1vmax 0;
 }
 
-.detailsBlock-4 {
+.detailsBlocks-4 {
   color: rgba(0, 0, 0, 0.897);
   font: 500 1.2vmax sans-serif;
 }
 
-.detailsBlock-4>p {
+.detailsBlocks-4>p {
   color: rgba(0, 0, 0, 0.534);
   font: 300 0.8vmax sans-serif;
 }
@@ -270,11 +270,11 @@
     font: 400 2vmax "Roboto";
   }
 
-  .detailsBlock-4 {
+  .detailsBlocks-4 {
     font: 500 2.5vmax sans-serif;
   }
 
-  .detailsBlock-4>p {
+  .detailsBlocks-4>p {
     font: 300 1.8vmax sans-serif;
   }
 

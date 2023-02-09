@@ -1,8 +1,7 @@
 import HomePage from "./pages/Home";
-import { BrowserRouter, Route, Routes, Switch } from "react-router-dom";
-import Register from "./pages/Register";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./app.css";
 import ProductDetails from "../src/component/Products/ProductDetails";
-import Login from "./pages/Login";
 import Product from "./component/Products/Product";
 const App = () => {
   return (
