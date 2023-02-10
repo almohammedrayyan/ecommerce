@@ -1,20 +1,27 @@
 import HomePage from "./pages/Home";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./app.css";
 import ProductDetails from "../src/component/Products/ProductDetails";
 import Product from "./component/Products/Product";
+import ProductList from "./component/Products/Products";
+import Search from "./component/Products/Search";
+import SearchBox from "./component/Products/Search";
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<HomePage />} />
-        <Route path="/products" element={<Product />} />
+    <Router>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/product/:id" component={ProductDetails} />
+        <Route exact path="/products" component={ProductList} />
+        <Route path="/products/:keyword" component={ProductList} />
 
-        {/* <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} /> */}
-        <Route exact path="/product/:id" element={<ProductDetails />} />
-      </Routes>
-    </BrowserRouter>
+        <Route exact path="/search" component={Search} />
+
+        {/* <Route path="/register" component={<Register />} />
+        <Route path="/login" component={<Login />} /> */}
+        <Route exact path="/product/:id" component={ProductDetails} />
+      </Switch>
+    </Router>
   );
 };
 

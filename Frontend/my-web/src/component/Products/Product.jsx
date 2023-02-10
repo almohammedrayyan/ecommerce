@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../../layout/Loader";
 import { useAlert } from "react-alert";
-import { getALLProduct } from "../../actions/productActions";
+import { clearError, getALLProduct } from "../../actions/productActions";
 import ProductCard from "../Card/ProductCard";
 const Conatiner = styled.div`
   margin: 2vmax auto;
@@ -27,7 +27,8 @@ const Product = () => {
   const alert = useAlert();
   useEffect(() => {
     if (error) {
-      return alert.error(error);
+      alert.error(error);
+      dispatch(clearError());
     }
     dispatch(getALLProduct());
   }, [dispatch, error, alert]);

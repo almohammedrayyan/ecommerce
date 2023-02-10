@@ -22,9 +22,9 @@
   align-items: flex-start;
 }
 
-/* .CarouselImage {
-  width: 60vmax;
-} */
+.CarouselImage {
+  width: 30vmax;
+}
 
 .detailsBlock-1>h2 {
   color: rgb(54, 54, 54);
@@ -203,6 +203,7 @@
   font: 400 1.3vmax "Gill Sans";
   text-align: center;
   color: rgba(0, 0, 0, 0.548);
+  margin-bottom: 2vmax;
 }
 
 @media screen and (max-width: 600px) {

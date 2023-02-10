@@ -2,16 +2,20 @@ import React, { useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "react-material-ui-carousel";
 import "./productDetails.css";
-
+import { useAlert } from "react-alert";
 import { Rating } from "@material-ui/lab";
-import { getOneProductDetails } from "../../actions/productActions";
+import { clearError, getOneProductDetails } from "../../actions/productActions";
 import { useParams } from "react-router-dom";
 import MetaData from "../../layout/MetaData";
 import Loader from "../../layout/Loader";
+import Navbar from "../Navbar";
+import Announcemnet from "../Announcemnet";
+import Footer from "../Footer";
+import ReviewCard from "../Card/ReviewCard";
 
-const ProductDetails = () => {
+const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
-
+  const alert = useAlert();
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
@@ -20,11 +24,17 @@ const ProductDetails = () => {
     value: product?.ratings,
     readOnly: true,
     precision: 0.5,
+    activeColor: "tomato",
+    isHalf: true,
   };
   const { id } = useParams();
   useEffect(() => {
-    dispatch(getOneProductDetails(id));
-  }, [dispatch, id]);
+    if (error) {
+      alert.error(error);
+      dispatch(clearError());
+    }
+    dispatch(getOneProductDetails(match.params.id));
+  }, [dispatch, match.params.id, alert, error]);
   return (
     <Fragment>
       {loading ? (
@@ -32,6 +42,8 @@ const ProductDetails = () => {
       ) : (
         <Fragment>
           <MetaData title={`${product?.name} -- ECOMMERCE`} />
+          <Announcemnet />
+          <Navbar />
           <div className="ProductDetails">
             {/* <p
               style={{
@@ -90,6 +102,17 @@ const ProductDetails = () => {
               <button className="submitReview">Submit Review</button>
             </div>
           </div>
+          <h3 className="reviewsHeading">Reviews</h3>
+          {product.reviews && product.reviews[0] ? (
+            <div className="reviews">
+              {product.reviews.map((review) => (
+                <ReviewCard review={review} />
+              ))}
+            </div>
+          ) : (
+            <p className="noReviews">No Reviews Yet</p>
+          )}
+          <Footer />
         </Fragment>
       )}
     </Fragment>
