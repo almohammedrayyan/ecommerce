@@ -19,11 +19,8 @@ const ProductList = ({ match }) => {
   const keyword = match.params.keyword;
 
   useEffect(() => {
-    dispatch(getALLProductFilter(keyword));
+    dispatch(getALLProduct(keyword));
   }, [dispatch, keyword]);
-  useEffect(() => {
-    dispatch(getALLProduct());
-  }, [dispatch]);
   return (
     <Fragment>
       {loading ? (

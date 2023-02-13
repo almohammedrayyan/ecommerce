@@ -77,7 +77,9 @@ const Navbar = () => {
           <Logo>Crusion</Logo>
         </Center>
         <Left>
-          <Search />
+          <Link to="/search" style={{ textDecoration: "none" }}>
+            <Search />
+          </Link>
           {/* <SearchBox /> */}
           <Link to="/" style={{ textDecoration: "none", color: "black" }}>
             <MenuItem>HOME</MenuItem>
